@@ -1,0 +1,22 @@
+[
+  { "id": 1, "name": "Albert Einstein", "century": 20, "field": "Science", "description": "Theoretical physicist" },
+  { "id": 2, "name": "Isaac Newton", "century": 17, "field": "Science", "description": "Mathematician and physicist" },
+  { "id": 3, "name": "Marie Curie", "century": 20, "field": "Science", "description": "Pioneer in radioactivity" },
+  { "id": 4, "name": "Leonardo da Vinci", "century": 15, "field": "Art", "description": "Renaissance polymath" },
+  { "id": 5, "name": "William Shakespeare", "century": 16, "field": "Literature", "description": "English playwright" },
+  { "id": 6, "name": "Mahatma Gandhi", "century": 20, "field": "Politics", "description": "Leader of Indian independence" },
+  { "id": 7, "name": "Nelson Mandela", "century": 20, "field": "Politics", "description": "Anti-apartheid revolutionary" },
+  { "id": 8, "name": "Galileo Galilei", "century": 17, "field": "Science", "description": "Astronomer and physicist" },
+  { "id": 9, "name": "Charles Darwin", "century": 19, "field": "Science", "description": "Theory of evolution" },
+  { "id": 10, "name": "Martin Luther King Jr.", "century": 20, "field": "Politics", "description": "Civil rights leader" },
+  { "id": 11, "name": "Ada Lovelace", "century": 19, "field": "Technology", "description": "First computer programmer" },
+  { "id": 12, "name": "Nikola Tesla", "century": 19, "field": "Science", "description": "Electrical engineer" },
+  { "id": 13, "name": "Steve Jobs", "century": 20, "field": "Technology", "description": "Co-founder of Apple" },
+  { "id": 14, "name": "Alan Turing", "century": 20, "field": "Technology", "description": "Father of computer science" },
+  { "id": 15, "name": "Aristotle", "century": -4, "field": "Philosophy", "description": "Greek philosopher" },
+  { "id": 16, "name": "Plato", "century": -4, "field": "Philosophy", "description": "Founder of the Academy" },
+  { "id": 17, "name": "Confucius", "century": -5, "field": "Philosophy", "description": "Chinese philosopher" },
+  { "id": 18, "name": "Mozart", "century": 18, "field": "Music", "description": "Classical composer" },
+  { "id": 19, "name": "Pablo Picasso", "century": 20, "field": "Art", "description": "Cubist painter" },
+  { "id": 20, "name": "Florence Nightingale", "century": 19, "field": "Medicine", "description": "Founder of modern nursing" }
+]
