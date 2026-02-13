@@ -1,4 +1,6 @@
 const figures = require("../data/figures.json");
+const AppError = require("../utils/AppError");
+
 const getAllFigures = (req, res) => {
   console.log(req.query);
   let result = [...figures];
@@ -30,6 +32,22 @@ const getAllFigures = (req, res) => {
   });
 };
 
+const getFigureById = (req, res, next) => {
+  const id = parseInt(req.params.id);
+
+  const figure = figures.find((f) => f.id === id);
+
+  if (!figure) {
+    return next(new AppError("Figure not found", 404));
+  }
+
+  res.status(200).json({
+    success: true,
+    data: figure,
+    message: "Figure fetched successfully",
+  });
+};
+
 const addFigure = (req, res) => {
   const newFigure = {
     id: figures.length + 1,
@@ -48,4 +66,5 @@ const addFigure = (req, res) => {
 module.exports = {
   getAllFigures,
   addFigure,
+  getFigureById,
 };

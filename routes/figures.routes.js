@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { getAllFigures } = require("../controllers/figures.controller");
 const validateFigure = require("../middleware/validateFigure");
-const { addFigure } = require("../controllers/figures.controller");
+const {
+  getAllFigures,
+  addFigure,
+  getFigureById,
+} = require("../controllers/figures.controller");
 
-router.post("/", validateFigure, addFigure);
 router.get("/", getAllFigures);
+router.get("/:id", getFigureById);
+router.post("/", validateFigure, addFigure);
 module.exports = router;
