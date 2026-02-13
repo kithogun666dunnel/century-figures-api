@@ -7,7 +7,9 @@ const app = express();
 app.use(express.json());
 
 // routes
+app.get("/", (req, res) => {
+  res.send("Root working");
+});
 app.use("/figures", figuresRoutes);
-
 // export app (IMPORTANT)
 module.exports = app;

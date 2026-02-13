@@ -47,4 +47,5 @@ const addFigure = (req, res) => {
 
 module.exports = {
   getAllFigures,
+  addFigure,
 };

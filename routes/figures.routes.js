@@ -6,5 +6,4 @@ const { addFigure } = require("../controllers/figures.controller");
 
 router.post("/", validateFigure, addFigure);
 router.get("/", getAllFigures);
-
 module.exports = router;
