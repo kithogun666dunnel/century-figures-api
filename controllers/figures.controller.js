@@ -63,8 +63,12 @@ const addFigure = (req, res) => {
 
   figures.push(newFigure);
 
-  res.status(201).json({
-    success: true,
+  // Set Location header
+  res.set("Location", `/figures/${newFigure.id}`);
+
+  return sendResponse({
+    res,
+    statusCode: 201,
     data: newFigure,
     message: "Figure created successfully",
   });

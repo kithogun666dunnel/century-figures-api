@@ -15,9 +15,9 @@ app.use(logger);
 // routes
 
 app.get("/", (req, res) => {
-  res.send("Root working");
+  res.send("Century Figures API v1 running");
 });
-app.use("/figures", figuresRoutes);
+app.use("/api/v1/figures", figuresRoutes);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl}`, 404));
