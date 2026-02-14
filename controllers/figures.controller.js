@@ -63,8 +63,13 @@ const addFigure = (req, res) => {
   });
 };
 
+const breakAsync = async (req, res, next) => {
+  throw new Error("Async broke");
+};
+
 module.exports = {
   getAllFigures,
   addFigure,
   getFigureById,
+  breakAsync,
 };
