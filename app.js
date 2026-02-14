@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(logger);
 
 // routes
+
 app.get("/", (req, res) => {
   res.send("Root working");
 });
@@ -20,11 +21,6 @@ app.use("/figures", figuresRoutes);
 
 app.all("*", (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl}`, 404));
-});
-
-app.use((req, res, next) => {
-  console.log("Normal middleware after routes");
-  next();
 });
 
 //--> errror handling middleware (must be last)
