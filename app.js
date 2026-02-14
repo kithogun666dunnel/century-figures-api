@@ -6,11 +6,17 @@ const AppError = require("./utils/AppError");
 const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
-const rateLimit = require("express-rate-limit");
 
+const app = express();
+
+// 🔐 Security middlewares
+app.use(helmet());
+app.use(cors());
+
+// 🚦 Rate Limiter
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // 100 requests per IP
+  windowMs: 60000,
+  max: 100,
   message: {
     status: "error",
     message: "Too many requests, please try again later",
@@ -18,30 +24,24 @@ const limiter = rateLimit({
 });
 
 app.use("/api", limiter);
-// must be last
-const app = express();
 
-// built-in middleware
+// 🧠 Built-in middleware
 app.use(express.json());
-app.use(helmet());
-
 app.use(logger);
-app.use(cors());
-app.use("/api", limiter);
 
-// routes
-
+// Routes
 app.get("/", (req, res) => {
   res.send("Century Figures API v1 running");
 });
+
 app.use("/api/v1/figures", figuresRoutes);
 
+// 404
 app.all("*", (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl}`, 404));
 });
 
-//--> errror handling middleware (must be last)
+// Error handler
 app.use(errorHandler);
 
-// export app (IMPORTANT)
 module.exports = app;
