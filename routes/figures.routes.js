@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const validateFigure = require("../middleware/validateFigure");
+const validateQuery = require("../middleware/validateQuery");
 const AppError = require("../utils/AppError");
 const {
   getAllFigures,
@@ -10,7 +11,7 @@ const {
 } = require("../controllers/figures.controller");
 const asyncHandler = require("../utils/asyncHandler");
 
-router.get("/", getAllFigures);
+router.get("/", validateQuery, getAllFigures);
 router.get("/break", asyncHandler(breakAsync));
 router.get("/:id", getFigureById);
 router.post("/", validateFigure, addFigure);
