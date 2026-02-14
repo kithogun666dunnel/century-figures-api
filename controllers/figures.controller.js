@@ -1,13 +1,11 @@
 const figures = require("../data/figures.json");
 const AppError = require("../utils/AppError");
-
+const sendResponse = require("../utils/sendResponse");
 const getAllFigures = (req, res) => {
-  console.log(req.query);
   let result = [...figures];
 
-  const { century, field, page = 1, limit } = req.query;
+  const { century, field, page = 1, limit = 5 } = req.query;
 
-  // Filtering
   if (century) {
     result = result.filter((f) => f.century === parseInt(century));
   }
@@ -16,33 +14,42 @@ const getAllFigures = (req, res) => {
     result = result.filter((f) => f.field === field);
   }
 
-  // Pagination
+  const totalRecords = result.length;
   const pageNumber = parseInt(page);
-  const pageLimit = parseInt(limit) || result.length;
+  const pageLimit = parseInt(limit);
 
   const start = (pageNumber - 1) * pageLimit;
   const end = start + pageLimit;
 
-  result = result.slice(start, end);
+  const paginatedResult = result.slice(start, end);
 
-  res.status(200).json({
-    success: true,
-    data: result,
+  const totalPages = Math.ceil(totalRecords / pageLimit);
+
+  return sendResponse({
+    res,
+    statusCode: 200,
+    data: paginatedResult,
+    meta: {
+      page: pageNumber,
+      limit: pageLimit,
+      totalRecords,
+      totalPages,
+    },
     message: "Figures fetched successfully",
   });
 };
 
 const getFigureById = (req, res, next) => {
   const id = parseInt(req.params.id);
-
   const figure = figures.find((f) => f.id === id);
 
   if (!figure) {
     return next(new AppError("Figure not found", 404));
   }
 
-  res.status(200).json({
-    success: true,
+  return sendResponse({
+    res,
+    statusCode: 200,
     data: figure,
     message: "Figure fetched successfully",
   });

@@ -4,17 +4,15 @@ const errorHandler = (err, req, res, next) => {
 
   if (isDev) {
     return res.status(statusCode).json({
-      success: false,
+      status: "error",
       message: err.message,
       stack: err.stack,
     });
   }
 
-  // Production response
-  res.status(statusCode).json({
-    success: false,
+  return res.status(statusCode).json({
+    status: "error",
     message: statusCode === 500 ? "Something went wrong" : err.message,
   });
 };
-
 module.exports = errorHandler;
